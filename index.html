@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>FurahaYao Safaris</title>
+	<link rel="icon" type="image/png" href="Images/FurahaYao Logo.png">
+	<link rel="stylesheet" href="style.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+	<header id="top">
+		<div class="navbar">
+			<div class="navbar-left">
+				<a href="#" aria-label="Go to top">
+					<img src="https://res.cloudinary.com/dtvuqa0i2/image/upload/v1770353223/FurahaYao_Logo_lpnojr.png" alt="FurahaYao Safaris Logo" class="logo" />
+				</a>
+				<span class="brand-name">FurahaYao Safaris</span>
+			</div>
+			<button class="navbar-hamburger" aria-label="Open menu">
+				<span></span><span></span><span></span>
+			</button>
+			<!-- Mobile menu overlay -->
+			<div class="mobile-menu-overlay" id="mobileMenuOverlay">
+				<nav class="mobile-menu-links">
+					<a href="#about">About</a>
+					<a href="#safaris">Safaris</a>
+					<a href="#destinations">Destinations</a>
+					<a href="#contact">Contact</a>
+				</nav>
+				<div class="mobile-menu-actions">
+					<a href="https://wa.me/255755392290" class="btn btn-outline whatsapp-btn" target="_blank">WhatsApp</a>
+					<button class="btn btn-primary plan-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Plan My Trip</button>
+					<button class="btn btn-accent hero-text-bg" onclick="document.getElementById('safaris').scrollIntoView({behavior:'smooth'})">Explore Safaris</button>
+				</div>
+			</div>
+		</div>
+	</header>
+	<main>
+		<section class="hero">
+			   <div class="hero-bg fadein-bg" style="background-image: url('https://res.cloudinary.com/dtvuqa0i2/image/upload/v1768550116/Safari_6_dekouj.jpg'); background-size: cover; background-position: center; width: 100vw; height: 100vh; position: relative;">
+				   <video class="hero-fadein-video" src="https://res.cloudinary.com/dtvuqa0i2/video/upload/v1768589880/IMG_1813_b0atce.mov" autoplay muted loop playsinline preload="auto" style="object-fit:cover;width:100vw;height:100vh;position:absolute;top:0;left:0;z-index:0;"></video>
+				   <div class="hero-overlay"></div>
+				   <div class="container hero-content">
+					   <!-- ...existing code... -->
+					   <div class="hero-buttons">
+						   <button class="btn btn-primary hero-text-bg" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Plan My Trip</button>
+						   <button class="btn btn-accent hero-text-bg" onclick="document.getElementById('safaris').scrollIntoView({behavior:'smooth'})">Explore Safaris</button>
+					   </div>
+				   </div>
+			   </div>
+		</section>
+	
+		<section id="about">
+			<div class="container about-section">
+				<div class="about-left">
+					<h2>About FurahaYao Safaris</h2>
+					<p>We are passionate about sharing Tanzania’s wonders. Our team is local, experienced, and committed to responsible travel. Every trip is crafted for authenticity and comfort.</p>
+					<ul class="about-trust">
+						<li>Personalized itineraries</li>
+						<li>Expert local guides</li>
+						<li>Ethical wildlife encounters</li>
+					</ul>
+					<div class="about-why">
+						<span>Why choose us?</span>
+						<ul>
+							<li>Transparent pricing</li>
+							<li>24/7 support</li>
+							<li>Trusted by travelers</li>
+						</ul>
+					</div>
+					<button class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Plan My Trip</button>
+				</div>
+				<div class="about-right">
+					<div class="about-media-box">
+						<img id="about-img" src="https://res.cloudinary.com/dtvuqa0i2/image/upload/v1770451049/On_the_Car_zinteo.jpg" alt="On the Car" class="img-cover about-fade" style="object-fit:cover;border-radius:12px;width:100%;height:130%;aspect-ratio:4/3;position:absolute;top:0;left:0;z-index:2;opacity:1;transition:opacity 1.2s;" />
+						<video id="about-video" src="https://res.cloudinary.com/dtvuqa0i2/video/upload/v1770451112/twigas_xnu4vv.mov" class="img-cover about-fade" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:1;opacity:0;transition:opacity 1.2s;object-fit:cover;border-radius:100px;" autoplay muted loop playsinline preload="auto"></video>
+					</div>
+				</div>
+				<style>
+				.about-media-box {
+					position: relative;
+					width: 100%;
+					aspect-ratio: 4/3;
+					max-width: 100%;
+					border-radius: 16px;
+					overflow: hidden;
+					min-height: 220px;
+				}
+				.about-fade {
+					border-radius: 16px;
+					transition: opacity 1.2s;
+				}
+				</style>
+				<script>
+				// About section animation: fade between image and video
+				document.addEventListener('DOMContentLoaded', function() {
+					var img = document.getElementById('about-img');
+					var vid = document.getElementById('about-video');
+					if (!img || !vid) return;
+					var showingImg = true;
+					setInterval(function() {
+						if (showingImg) {
+							img.style.opacity = 0;
+							vid.style.opacity = 1;
+						} else {
+							img.style.opacity = 1;
+							vid.style.opacity = 0;
+						}
+						showingImg = !showingImg;
+					}, 4000);
+				});
+				</script>
+			</div>
+		</section>
+		<section id="safaris">
+			<div class="container safaris-section">
+				<h2>Our Safaris & Services</h2>
+				<p>Discover the best ways to explore Tanzania, tailored to your interests.</p>
+				<div class="safaris-grid">
+					<div class="safari-card">
+						<video src="https://res.cloudinary.com/dtvuqa0i2/video/upload/v1770451735/eating_animals_dpsjid.mov" class="card-img" autoplay muted loop playsinline preload="auto" style="object-fit:cover;border-radius:12px;width:100%;aspect-ratio:4/3;"></video>
+						<h3>Wildlife Safaris</h3>
+						<p>Experience Tanzania’s iconic parks and see the Big Five up close.</p>
+						<button class="btn btn-accent" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Enquire Now</button>
+					</div>
+					<div class="safari-card">
+						<video src="https://res.cloudinary.com/dtvuqa0i2/video/upload/v1770451724/masai_ajfdax.mov" class="card-img" autoplay muted loop playsinline preload="auto" style="object-fit:cover;border-radius:12px;width:100%;aspect-ratio:4/3;"></video>
+						<h3>Cultural Tours</h3>
+						<p>Connect with local communities and traditions for a deeper journey.</p>
+						<button class="btn btn-accent" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Enquire Now</button>
+					</div>
+					<div class="safari-card">
+						<img src="https://res.cloudinary.com/dtvuqa0i2/image/upload/v1773448165/zenj_water_vwpuqp.jpg" alt="Zanzibar Getaways" class="card-img" />
+						<h3>Zanzibar Getaways</h3>
+						<p>Relax on pristine beaches and explore the spice island’s culture.</p>
+						<button class="btn btn-accent" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Enquire Now</button>
+					</div>
+					<div class="safari-card">
+						<video src="https://res.cloudinary.com/dtvuqa0i2/video/upload/v1773447923/IMG_1262_qwhsxd.mov" class="card-img" autoplay muted loop playsinline preload="auto" style="object-fit:cover;border-radius:12px;width:100%;aspect-ratio:4/3;"></video>
+						<h3>Custom/Private Safaris</h3>
+						<p>Design your own adventure with private guides and flexible itineraries.</p>
+						<button class="btn btn-accent" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Enquire Now</button>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section id="destinations">
+			<div class="container destinations-section">
+				<h2>Top Destinations</h2>
+				<p>Explore Tanzania’s most breathtaking places and unique experiences.</p>
+				<div class="destinations-grid">
+					<div class="destination-tile">
+						<video src="https://res.cloudinary.com/dtvuqa0i2/video/upload/v1773449349/IMG_1814_fk8gnw.mov" class="tile-img" autoplay muted loop playsinline preload="auto" style="object-fit:cover;border-radius:12px;width:100%;aspect-ratio:16/9;"></video>
+						<div class="tile-overlay">
+							<span class="tile-name">Serengeti</span>
+							<span class="tile-highlight">Great Migration</span>
+						</div>
+					</div>
+					<div class="destination-tile">
+						<img src="https://res.cloudinary.com/dtvuqa0i2/image/upload/v1773449932/Screenshot_2026-03-13_at_5.58.47_PM_kxrjy5.png" alt="Ngorongoro" class="tile-img" />
+						<div class="tile-overlay">
+							<span class="tile-name">Ngorongoro</span>
+							<span class="tile-highlight">Crater views</span>
+						</div>
+					</div>
+					<div class="destination-tile">
+						<video src="https://res.cloudinary.com/dtvuqa0i2/video/upload/v1773448696/IMG_1192_3_rkqah2.mov" class="tile-img" autoplay muted loop playsinline preload="auto" style="object-fit:cover;border-radius:12px;width:100%;aspect-ratio:16/9;"></video>
+						<div class="tile-overlay">
+							<span class="tile-name">Tarangire</span>
+							<span class="tile-highlight">Elephant herds</span>
+						</div>
+					</div>
+					<div class="destination-tile">
+						<img src="https://res.cloudinary.com/dtvuqa0i2/image/upload/v1773448165/zenj_water_vwpuqp.jpg" alt="Zanzibar" class="tile-img" />
+						<div class="tile-overlay">
+							<span class="tile-name">Zanzibar</span>
+							<span class="tile-highlight">Beach paradise</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section id="contact">
+			<div class="container contact-section">
+				<div class="contact-left">
+					<h2>Contact Us</h2>
+					<p>Ready to plan your adventure? Reach out and we’ll help you create your perfect trip.</p>
+					<div class="contact-chips">
+						<a href="https://wa.me/255755392290" class="chip whatsapp-chip" target="_blank">WhatsApp</a>
+						<a href="mailto:info@furahayao.com" class="chip email-chip">info@furahayao.com</a>
+						<span class="chip location-chip">Tanzania</span>
+					</div>
+				</div>
+				<div class="contact-right">
+					<form id="contactForm">
+						<label for="name">Full Name</label>
+						<input type="text" id="name" name="name" required>
+						<label for="email">Email</label>
+						<input type="email" id="email" name="email" required>
+						<label for="dates">Travel Dates</label>
+						<input type="text" id="dates" name="dates" placeholder="e.g. June 2026" required>
+						<label for="message">Message</label>
+						<textarea id="message" name="message" rows="4" required></textarea>
+						<button type="submit" class="btn btn-primary">Send</button>
+						<div id="formSuccess" class="form-success" style="display:none;">Thank you — we will be in touch soon.</div>
+					</form>
+				</div>
+			</div>
+		</section>
+	</main>
+	<footer>
+		<div class="container footer-section">
+			<div class="footer-left">
+				<a href="#top" aria-label="Go to top">
+					<img src="https://res.cloudinary.com/dtvuqa0i2/image/upload/v1770353223/FurahaYao_Logo_lpnojr.png" alt="FurahaYao Logo" class="logo" />
+				</a>
+				<span class="footer-brand">FurahaYao Safaris</span>
+			</div>
+			<div class="footer-middle">
+				<a href="#about">About</a>
+				<a href="#safaris">Safaris</a>
+				<a href="#destinations">Destinations</a>
+				<a href="#contact">Contact</a>
+			</div>
+			<div class="footer-right">
+				<span>info@furahayao.com</span><br>
+				<span>Tanzania</span><br>
+				<div class="footer-socials">
+					   <a href="https://www.instagram.com/furahayao_safaris/" aria-label="Instagram" target="_blank"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg" alt="Instagram" class="social-icon" /></a>
+					   <a href="https://www.instagram.com/furahayao_safaris/" aria-label="Facebook" target="_blank"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/facebook.svg" alt="Facebook" class="social-icon" /></a>
+				</div>
+			</div>
+		</div>
+		<div class="footer-bottom">
+			<span>&copy; 2026 FurahaYao Safaris. All rights reserved.</span>
+		</div>
+	</footer>
+	<script src="script.js"></script>
+</body>
+</html>
