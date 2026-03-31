@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+@theme {
+  --color-safari-brown: #8B5C2A;
+  --color-safari-yellow: #F7C702;
+  --color-safari-black: #151515;
+  --color-safari-light: #F3F3F2;
+  --color-safari-white: #FFFFFF;
+
+  --font-sans: "Montserrat", Arial, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: var(--font-sans);
+    color: var(--color-safari-black);
+    background: var(--color-safari-yellow);
+  }
+  h1, h2, h3, h4 {
+    font-weight: 700;
+  }
+}
+
+/* Hero fade-in animations */
+@keyframes fadein-hero {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fadeup {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: var(--color-safari-yellow); }
+}
+
+.hero-fadein-video {
+  opacity: 0;
+  animation: fadein-hero 2.2s ease forwards;
+  animation-delay: 0.5s;
+}
+
+.hero-content-animate {
+  animation: fadeup 1s ease forwards;
+  animation-delay: 0.8s;
+  opacity: 0;
+}
+
+.typewriter-text {
+  border-right: 2px solid var(--color-safari-yellow);
+  white-space: nowrap;
+  overflow: hidden;
+  animation: blink-caret 0.7s step-end infinite;
+}
+
+/* Contact form animations */
+@keyframes popIn {
+  from { transform: scale(0); }
+  to   { transform: scale(1); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}

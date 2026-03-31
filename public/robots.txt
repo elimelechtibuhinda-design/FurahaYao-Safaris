@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Allow: /api/contact
+
+Sitemap: https://furahayao-safaris.com/sitemap.xml
+
+# Google Bot
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+# Bingbot
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
