@@ -63,36 +63,41 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-[3] max-w-325 mx-auto px-4 md:px-6 flex flex-col justify-center min-h-screen hero-content-animate">
-        <span className="text-safari-yellow font-bold text-sm sm:text-base mb-2 sm:mb-3 tracking-wide uppercase">
-          FurahaYao Safaris
-        </span>
 
         <h1 className="text-white text-[clamp(1.5rem,5vw,3.5rem)] font-bold leading-tight mb-3 sm:mb-4">
           Tanzania Awaits<br />
-          <span className="text-safari-yellow">Your Adventure</span>
+          <span className="text-safari-brown">Your Adventure</span>
         </h1>
 
         {/* Typewriter */}
         <div className="mb-6 sm:mb-8">
-          <span className="typewriter-text font-semibold text-safari-yellow text-base sm:text-lg font-sans">
+          <span className="typewriter-text font-semibold text-white text-base sm:text-lg font-sans">
             {displayed}
           </span>
         </div>
 
-        <p className="bg-safari-yellow text-safari-black rounded-full px-4 sm:px-5 py-2 inline-block font-semibold mb-6 sm:mb-8 self-start text-sm sm:text-base">
+        <p className="bg-safari-brown text-safari-black rounded-full px-4 sm:px-5 py-2 inline-block font-semibold mb-6 sm:mb-8 self-start text-sm sm:text-base">
           Expert local guides · Ethical wildlife encounters
         </p>
 
         <div className="flex flex-wrap gap-3 sm:gap-4">
           <button
-            onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+            onClick={() => {
+              if (typeof window !== "undefined") {
+                document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+              }
+            }}
             className="bg-safari-brown text-white px-5 sm:px-7 py-2 sm:py-3 rounded-full font-bold text-sm sm:text-base hover:opacity-90 transition-opacity cursor-pointer"
           >
             Plan My Trip
           </button>
           <button
-            onClick={() => document.getElementById("safaris")?.scrollIntoView({ behavior: "smooth" })}
-            className="bg-safari-yellow text-safari-black px-5 sm:px-7 py-2 sm:py-3 rounded-full font-bold text-sm sm:text-base hover:opacity-90 transition-opacity cursor-pointer"
+            onClick={() => {
+              if (typeof window !== "undefined") {
+                document.getElementById("safaris")?.scrollIntoView({ behavior: "smooth" });
+              }
+            }}
+            className="bg-safari-brown text-safari-black px-5 sm:px-7 py-2 sm:py-3 rounded-full font-bold text-sm sm:text-base hover:opacity-90 transition-opacity cursor-pointer"
           >
             Explore Safaris
           </button>

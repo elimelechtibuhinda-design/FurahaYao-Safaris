@@ -114,7 +114,7 @@ export default function Destinations() {
   }, [indexes]);
 
   return (
-    <section id="destinations" className="py-12 bg-safari-yellow">
+    <section id="destinations" className="py-12 bg-safari-brown">
       <div className="max-w-325 mx-auto px-4 md:px-6">
         <h2 className="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-safari-black">
           Top Destinations
@@ -173,7 +173,7 @@ export default function Destinations() {
                 {/* Labels */}
                 <div className="absolute bottom-0 left-0 p-4 flex flex-col gap-1">
                   <span className="text-white text-xl font-bold">{d.name}</span>
-                  <span className="text-safari-yellow font-medium text-base">
+                  <span className="text-safari-brown font-medium text-base">
                     {d.highlight}
                   </span>
                 </div>

@@ -46,10 +46,12 @@ const safaris: SafariCard[] = [
 function EnquireButton() {
   return (
     <button
-      onClick={() =>
-        document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
-      }
-      className="bg-safari-yellow text-safari-black px-6 py-2 rounded-full font-bold text-sm hover:opacity-90 transition-opacity cursor-pointer"
+      onClick={() => {
+        if (typeof window !== "undefined") {
+          document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+        }
+      }}
+      className="bg-safari-brown text-safari-black px-6 py-2 rounded-full font-bold text-sm hover:opacity-90 transition-opacity cursor-pointer"
     >
       Enquire Now
     </button>

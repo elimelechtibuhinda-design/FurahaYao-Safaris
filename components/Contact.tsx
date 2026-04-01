@@ -99,7 +99,7 @@ function Field({ label, required, children }: { label: string; required?: boolea
     <div className="flex flex-col gap-2">
       <label className="text-xs font-semibold tracking-wider uppercase text-safari-brown">
         {label}
-        {required && <span className="text-safari-yellow ml-1">*</span>}
+        {required && <span className="text-safari-brown ml-1">*</span>}
       </label>
       {children}
     </div>
@@ -123,7 +123,49 @@ export default function Contact() {
   const totalSteps = STEPS.length;
   const progress = ((step - 1) / (totalSteps - 1)) * 100;
 
+  // Validation for each step
+  const isStepValid = () => {
+    switch (step) {
+      case 1:
+        return form.firstName.trim() && form.lastName.trim() && form.email.trim() && form.heardFrom.trim() && form.language.trim();
+      case 2:
+        return form.travelWith.trim() && form.occasion.trim();
+      case 3:
+        if (form.exactDates === "Yes") {
+          return form.startDate.trim() && form.endDate.trim();
+        } else if (form.exactDates === "No") {
+          return form.departurePeriod.trim();
+        } else {
+          return form.exactDates.trim();
+        }
+      case 4:
+        // If Zanzibar is selected, require zanzibarDuration
+        if (form.extras.includes("Zanzibar")) {
+          return form.zanzibarDuration.trim();
+        }
+        return true;
+      case 5:
+        return form.parks.length > 0;
+      case 6:
+        if (form.additionalActivities === "Yes") {
+          return form.activities.length > 0;
+        }
+        return form.additionalActivities.trim();
+      case 7:
+        return form.accommodation.trim() && form.accommodationCategory.trim() && form.locationPreference.trim();
+      case 8:
+        return form.dreamSafari.trim() && form.budget.trim() && form.contactAgain.trim();
+      default:
+        return true;
+    }
+  };
+
   const navigate = (dir: "forward" | "back") => {
+    if (dir === "forward" && !isStepValid()) {
+      setError("Please fill in all required fields before continuing.");
+      return;
+    }
+    setError("");
     setDirection(dir);
     setAnimating(true);
     setTimeout(() => {
@@ -163,7 +205,7 @@ export default function Contact() {
             </span>
           </div>
           <h1 className="text-[clamp(2rem,5vw,3rem)] font-bold text-safari-black mb-3">
-            Plan Your <span className="text-safari-yellow">Safari</span>
+            Plan Your <span className="text-safari-brown">Safari</span>
           </h1>
           <p className="text-safari-black/60 max-w-md mx-auto leading-relaxed">
             We want to understand you properly so we can design a safari that fits you — not a generic one.
@@ -175,7 +217,7 @@ export default function Contact() {
           <div className="bg-safari-light rounded-3xl p-12 text-center animate-[fadeup_0.8s_ease_both]">
             <div className="text-6xl mb-6 animate-[float_3s_ease-in-out_infinite]">🦁</div>
             <h2 className="text-[clamp(1.5rem,4vw,2.5rem)] font-bold text-safari-black mb-4">
-              Your Journey <span className="text-safari-yellow">Begins</span>
+              Your Journey <span className="text-safari-brown">Begins</span>
             </h2>
             <div className="w-16 h-0.5 bg-safari-brown mx-auto mb-6 opacity-50" />
             <p className="text-safari-black/60 max-w-sm mx-auto leading-relaxed">
@@ -188,10 +230,10 @@ export default function Contact() {
             <div className="mb-10 animate-[fadeup_0.9s_0.15s_ease_both]">
               <div className="h-1 bg-safari-light rounded-full mb-4 overflow-hidden">
                 <div
-                  className="h-full bg-gradient-to-r from-safari-brown via-safari-yellow to-safari-brown rounded-full transition-all duration-500 ease-out relative"
+                  className="h-full bg-gradient-to-r from-safari-brown via-safari-brown to-safari-brown rounded-full transition-all duration-500 ease-out relative"
                   style={{ width: `${progress}%` }}
                 >
-                  <span className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-3 h-3 rounded-full bg-safari-yellow shadow-lg shadow-safari-yellow/50" />
+                  <span className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-3 h-3 rounded-full bg-safari-brown shadow-lg shadow-safari-brown/50" />
                 </div>
               </div>
               <div className="flex justify-between">
@@ -204,7 +246,7 @@ export default function Contact() {
                     <div
                       className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-semibold transition-all duration-300
                         ${s.num === step
-                          ? "bg-safari-yellow text-safari-black shadow-lg shadow-safari-yellow/30"
+                          ? "bg-safari-brown text-safari-black shadow-lg shadow-safari-brown/30"
                           : s.num < step
                             ? "bg-safari-brown text-white"
                             : "bg-safari-light text-safari-black/40 border border-safari-light"
@@ -236,7 +278,7 @@ export default function Contact() {
                 {step === 1 && (
                   <>
                     <div className="flex items-baseline gap-4 mb-8 pb-5 border-b border-safari-brown/10">
-                      <span className="text-xs font-semibold tracking-widest text-safari-yellow">01</span>
+                      <span className="text-xs font-semibold tracking-widest text-safari-brown">01</span>
                       <h3 className="text-xl md:text-2xl font-bold text-safari-black">
                         Let&apos;s get to know you
                       </h3>
@@ -296,7 +338,7 @@ export default function Contact() {
                 {step === 2 && (
                   <>
                     <div className="flex items-baseline gap-4 mb-8 pb-5 border-b border-safari-brown/10">
-                      <span className="text-xs font-semibold tracking-widest text-safari-yellow">02</span>
+                      <span className="text-xs font-semibold tracking-widest text-safari-brown">02</span>
                       <h3 className="text-xl md:text-2xl font-bold text-safari-black">
                         Your travel plans
                       </h3>
@@ -323,7 +365,7 @@ export default function Contact() {
                 {step === 3 && (
                   <>
                     <div className="flex items-baseline gap-4 mb-8 pb-5 border-b border-safari-brown/10">
-                      <span className="text-xs font-semibold tracking-widest text-safari-yellow">03</span>
+                      <span className="text-xs font-semibold tracking-widest text-safari-brown">03</span>
                       <h3 className="text-xl md:text-2xl font-bold text-safari-black">
                         Safari timing
                       </h3>
@@ -384,7 +426,7 @@ export default function Contact() {
                 {step === 4 && (
                   <>
                     <div className="flex items-baseline gap-4 mb-8 pb-5 border-b border-safari-brown/10">
-                      <span className="text-xs font-semibold tracking-widest text-safari-yellow">04</span>
+                      <span className="text-xs font-semibold tracking-widest text-safari-brown">04</span>
                       <h3 className="text-xl md:text-2xl font-bold text-safari-black">
                         Zanzibar &amp; extra services
                       </h3>
@@ -420,7 +462,7 @@ export default function Contact() {
                 {step === 5 && (
                   <>
                     <div className="flex items-baseline gap-4 mb-8 pb-5 border-b border-safari-brown/10">
-                      <span className="text-xs font-semibold tracking-widest text-safari-yellow">05</span>
+                      <span className="text-xs font-semibold tracking-widest text-safari-brown">05</span>
                       <h3 className="text-xl md:text-2xl font-bold text-safari-black">
                         Safari destinations
                       </h3>
@@ -451,7 +493,7 @@ export default function Contact() {
                 {step === 6 && (
                   <>
                     <div className="flex items-baseline gap-4 mb-8 pb-5 border-b border-safari-brown/10">
-                      <span className="text-xs font-semibold tracking-widest text-safari-yellow">06</span>
+                      <span className="text-xs font-semibold tracking-widest text-safari-brown">06</span>
                       <h3 className="text-xl md:text-2xl font-bold text-safari-black">
                         Experiences
                       </h3>
@@ -494,7 +536,7 @@ export default function Contact() {
                 {step === 7 && (
                   <>
                     <div className="flex items-baseline gap-4 mb-8 pb-5 border-b border-safari-brown/10">
-                      <span className="text-xs font-semibold tracking-widest text-safari-yellow">07</span>
+                      <span className="text-xs font-semibold tracking-widest text-safari-brown">07</span>
                       <h3 className="text-xl md:text-2xl font-bold text-safari-black">
                         Accommodation
                       </h3>
@@ -537,7 +579,7 @@ export default function Contact() {
                 {step === 8 && (
                   <>
                     <div className="flex items-baseline gap-4 mb-8 pb-5 border-b border-safari-brown/10">
-                      <span className="text-xs font-semibold tracking-widest text-safari-yellow">08</span>
+                      <span className="text-xs font-semibold tracking-widest text-safari-brown">08</span>
                       <h3 className="text-xl md:text-2xl font-bold text-safari-black">
                         Final details
                       </h3>
@@ -596,6 +638,9 @@ export default function Contact() {
                     {step} / {totalSteps}
                   </span>
 
+                  {error && (
+                    <div className="text-red-600 text-sm mb-2">{error}</div>
+                  )}
                   {step < totalSteps ? (
                     <button
                       className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-safari-brown text-white font-semibold text-sm hover:bg-safari-black hover:-translate-y-0.5 hover:shadow-xl hover:shadow-safari-brown/20 transition-all cursor-pointer"
@@ -605,7 +650,7 @@ export default function Contact() {
                     </button>
                   ) : (
                     <button
-                      className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-safari-yellow text-safari-black font-semibold text-sm hover:bg-safari-brown hover:text-white hover:-translate-y-0.5 hover:shadow-xl hover:shadow-safari-yellow/30 transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-safari-brown text-safari-black font-semibold text-sm hover:bg-safari-brown hover:text-white hover:-translate-y-0.5 hover:shadow-xl hover:shadow-safari-brown/30 transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                       onClick={handleSubmit}
                       disabled={sending}
                     >

@@ -11,8 +11,10 @@ const links = [
 ];
 
 function smoothScroll(id: string) {
-  const el = document.querySelector(id);
-  if (el) el.scrollIntoView({ behavior: "smooth" });
+  if (typeof window !== "undefined") {
+    const el = document.querySelector(id);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  }
 }
 
 export default function Navbar() {
@@ -20,6 +22,7 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
     const onScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -27,7 +30,9 @@ export default function Navbar() {
 
   const toggleMenu = () => {
     setMenuOpen((prev) => {
-      document.body.style.overflow = prev ? "" : "hidden";
+      if (typeof window !== "undefined") {
+        document.body.style.overflow = prev ? "" : "hidden";
+      }
       return !prev;
     });
   };
@@ -35,7 +40,9 @@ export default function Navbar() {
   const handleNavClick = (href: string) => {
     smoothScroll(href);
     setMenuOpen(false);
-    document.body.style.overflow = "";
+    if (typeof window !== "undefined") {
+      document.body.style.overflow = "";
+    }
   };
 
   return (
@@ -126,7 +133,7 @@ export default function Navbar() {
 
       {/* Mobile overlay */}
       <div
-        className={`fixed top-22 left-0 w-full h-[calc(100vh-88px)] bg-safari-yellow z-9999 flex flex-col pt-6 sm:pt-8 px-4 sm:px-8 transition-transform duration-300 overflow-y-auto ${
+        className={`fixed top-22 left-0 w-full h-[calc(100vh-88px)] bg-safari-brown z-9999 flex flex-col pt-6 sm:pt-8 px-4 sm:px-8 transition-transform duration-300 overflow-y-auto ${
           menuOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -135,7 +142,7 @@ export default function Navbar() {
             <button
               key={l.href}
               onClick={() => handleNavClick(l.href)}
-              className="text-safari-brown text-lg sm:text-xl font-semibold text-left bg-transparent border-none cursor-pointer py-2 hover:opacity-70 transition-opacity"
+              className="text-white text-lg sm:text-xl font-semibold text-left bg-transparent border-none cursor-pointer py-2 hover:opacity-70 transition-opacity"
             >
               {l.label}
             </button>

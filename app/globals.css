@@ -2,7 +2,7 @@
 
 @theme {
   --color-safari-brown: #8B5C2A;
-  --color-safari-yellow: #F7C702;
+  --color-safari-yellow: var(--color-safari-brown);
   --color-safari-black: #151515;
   --color-safari-light: #F3F3F2;
   --color-safari-white: #FFFFFF;
@@ -17,7 +17,7 @@
   body {
     font-family: var(--font-sans);
     color: var(--color-safari-black);
-    background: var(--color-safari-yellow);
+    background: var(--color-safari-brown);
   }
   h1, h2, h3, h4 {
     font-weight: 700;
@@ -37,7 +37,7 @@
 
 @keyframes blink-caret {
   from, to { border-color: transparent; }
-  50% { border-color: var(--color-safari-yellow); }
+  50% { border-color: var(--color-safari-brown); }
 }
 
 .hero-fadein-video {
@@ -52,8 +52,8 @@
   opacity: 0;
 }
 
-.typewriter-text {
-  border-right: 2px solid var(--color-safari-yellow);
+ .typewriter-text {
+  border-right: 2px solid var(--color-safari-brown);
   white-space: nowrap;
   overflow: hidden;
   animation: blink-caret 0.7s step-end infinite;

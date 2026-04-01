@@ -32,7 +32,7 @@ export default function Footer() {
             <a
               key={l.href}
               href={l.href}
-              className="text-white no-underline font-medium hover:text-safari-yellow transition-colors"
+              className="text-white no-underline font-medium hover:text-safari-brown transition-colors"
             >
               {l.label}
             </a>
@@ -93,7 +93,7 @@ export default function Footer() {
               href="https://blewagency.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white hover:text-safari-yellow transition-colors"
+              className="text-white hover:text-safari-brown transition-colors"
             >
               Blew Agency
             </a>

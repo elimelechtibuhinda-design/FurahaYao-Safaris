@@ -34,7 +34,7 @@ export default function About() {
           </ul>
 
           <div>
-            <h3 className="font-bold text-safari-yellow text-lg block mb-2">
+            <h3 className="font-bold text-safari-brown text-lg block mb-2">
               Why choose us?
             </h3>
             <ul className="flex flex-wrap gap-3">
@@ -50,7 +50,11 @@ export default function About() {
           </div>
 
           <button
-            onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+            onClick={() => {
+              if (typeof window !== "undefined") {
+                document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+              }
+            }}
             className="self-start bg-safari-brown text-white px-7 py-3 rounded-full font-bold text-base hover:opacity-90 transition-opacity cursor-pointer mt-2"
           >
             Plan My Trip
